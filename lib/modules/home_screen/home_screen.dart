@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart ' as http;
+import 'package:http/http.dart' as http;
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -11,15 +11,52 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List news = [];
-
   @override
   void initState() {
     print('data is processed');
     getData();
+    // loadMovies();
+
     // TODO: implement initState
     super.initState();
   }
+
+  List news = [];
+  // List trendingMovies = [];
+  // List topMovies = [];
+  // List tv = [];
+  // final String key = '13ecc04195922b63e3c0bcab24e394e4';
+  // final String token =
+  //     'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxM2VjYzA0MTk1OTIyYjYzZTNjMGJjYWIyNGUzOTRlNCIsInN1YiI6IjY0MDVlNjE3MDIxY2VlMDA4NDcxZTM4NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.A_wmnjKbztLTqnSKnCupli6i_7PJvIYh2-QczQ7nS3M';
+  //
+  // loadMovies() async {
+  //   var response = await http.get(
+  //     Uri.parse(
+  //         " https://api.themoviedb.org/3/movie/550?api_key=13ecc04195922b63e3c0bcab24e394e4"),
+  //   );
+  //   print(response.statusCode);
+  //   print(response);
+  //   print(response.body);
+  //
+  //   TMDB tmdbWithCustomLogs = TMDB(
+  //     ApiKeys(key, token),
+  //     logConfig: ConfigLogger(
+  //       showLogs: true,
+  //       showErrorLogs: true,
+  //     ),
+  //   );
+  //
+  //   Map trendingResult = await tmdbWithCustomLogs.v3.trending.getTrending();
+  //   Map topResult = await tmdbWithCustomLogs.v3.movies.getTopRated();
+  //   Map tvResult = await tmdbWithCustomLogs.v3.tv.getPopular();
+  //
+  //   setState(() {
+  //     trendingMovies = trendingResult['results'];
+  //     topMovies = topResult['results'];
+  //     tv = tvResult['results'];
+  //   });
+  //   print(trendingMovies);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +106,8 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     });
   }
+
+// GET DATA NEWS API
 }
 
 //Inherited Widget to pass data between screens or a multiple widgets like (Tree)
