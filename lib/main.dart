@@ -1,4 +1,4 @@
-import 'package:boot_camp_creativa/view/splash.dart';
+import 'package:boot_camp_creativa/modules/splash_screen/splash.dart';
 import 'package:flutter/material.dart';
 
 void main() {

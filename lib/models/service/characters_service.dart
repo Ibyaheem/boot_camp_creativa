@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../models/characters.dart';
+import '../characters/characters.dart';
 
 class CharacterService {
   Future<List<Character>?> fetchCharacters() async {

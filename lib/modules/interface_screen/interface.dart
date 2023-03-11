@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../modules/login_screen/login.dart';
+import '../login_screen/login.dart';
 
 class Interface extends StatelessWidget {
   const Interface({Key? key}) : super(key: key);

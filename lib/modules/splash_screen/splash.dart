@@ -1,4 +1,4 @@
-import 'package:boot_camp_creativa/view/interface.dart';
+import 'package:boot_camp_creativa/modules/interface_screen/interface.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen>
     controller = AnimationController(
       vsync: this,
       duration: Duration(
-        seconds: 5,
+        seconds: 25,
       ),
     );
     controller.addStatusListener((status) {
@@ -62,10 +62,10 @@ class _SplashScreenState extends State<SplashScreen>
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.brown,
       body: Center(
         child: Lottie.network(
-            'https://assets5.lottiefiles.com/packages/lf20_fFAEQMshT3.json',
+            'https://assets4.lottiefiles.com/packages/lf20_fFAEQMshT3.json',
             controller: controller, onLoaded: (comp) {
           controller.duration = comp.duration;
           controller.forward();

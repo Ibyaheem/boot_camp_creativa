@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../functions/functions.dart';
-import '../models/characters.dart';
-import '../service/characters_service.dart';
-import 'characteer_details.dart';
+import '../../functions/functions.dart';
+import '../../models/characters/characters.dart';
+import '../../models/service/characters_service.dart';
+import '../details_screen/characteer_details.dart';
 
 class ViewScreen extends StatefulWidget {
   @override

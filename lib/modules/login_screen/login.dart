@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../view/view.dart';
+import '../view_screen/view.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

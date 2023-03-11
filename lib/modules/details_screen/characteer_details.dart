@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../functions/functions.dart';
-import '../models/characters.dart';
+import '../../functions/functions.dart';
+import '../../models/characters/characters.dart';
 
 class CharacterDetails extends StatefulWidget {
   final Character character;
