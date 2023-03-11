@@ -22,18 +22,21 @@ class _CharacterDetailsState extends State<CharacterDetails> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Image(
-              image: Image.network(
-                widget.character.image != ""
-                    ? widget.character.image
-                    : 'https://i0.wp.com/gamingballistic.com/wp-content/uploads/2015/09/wizard_by_gerezon-d5d1i0h-1.jpg?fit=600%2C840&ssl=1',
-                errorBuilder:
-                    (BuildContext context, Object object, StackTrace? trace) {
-                  return Image(
-                    image: AssetImage('assets/DeathlyHallows.png'),
-                  );
-                },
-              ).image,
+            Container(
+              height: 500.0,
+              child: Image(
+                image: Image.network(
+                  widget.character.image != ""
+                      ? widget.character.image
+                      : 'https://i0.wp.com/gamingballistic.com/wp-content/uploads/2015/09/wizard_by_gerezon-d5d1i0h-1.jpg?fit=600%2C840&ssl=1',
+                  errorBuilder:
+                      (BuildContext context, Object object, StackTrace? trace) {
+                    return Image(
+                      image: AssetImage('assets/DeathlyHallows.png'),
+                    );
+                  },
+                ).image,
+              ),
             ),
             Container(
               margin: const EdgeInsets.only(left: 8, right: 8),

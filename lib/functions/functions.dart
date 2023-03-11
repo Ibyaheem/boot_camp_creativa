@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 Color houseColor(String house) {
   switch (house) {
     case "Gryffindor":
-      return Colors.deepOrange;
+      return Colors.redAccent;
     case "Slytherin":
       return Colors.green;
     case "Ravenclaw":
-      return Colors.purple;
+      return Colors.blueAccent;
     case "Hufflepuff":
       return Colors.amber;
     default:

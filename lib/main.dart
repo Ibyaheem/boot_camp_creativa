@@ -1,4 +1,4 @@
-import 'package:boot_camp_creativa/view/interface.dart';
+import 'package:boot_camp_creativa/view/splash.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,27 +15,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Creativa BootCamp',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blueGrey,
-      ),
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Colors.blueGrey,
+          fontFamily: 'Yusei_Magic'),
       debugShowCheckedModeBanner: false,
-      home: Interface(),
-      /* routes: {
-        '/HomeScreen': (context) {
-          return HomeScreen();
-        },
-        '/x': (context) {
-          return HomeScreen();
-        }
-      },  */
+      // routes: {
+      //   'splash': (context) => SplashScreen(),
+      //   'interface': (context) => Interface(),
+      //   'login': (context) => LoginScreen(),
+      // },
+      // initialRoute: 'splash',
+      home: SplashScreen(),
     );
   }
 }
