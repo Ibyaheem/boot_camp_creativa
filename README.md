@@ -1,6 +1,6 @@
 # boot_camp_creativa
 
-A new Flutter project.
+A simple app that presents hogwarts characters using api.
 
 ## Getting Started
 
