@@ -1,6 +1,7 @@
-import 'package:boot_camp_creativa/modules/interface_screen/interface.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+
+import '../interface_screen/interface.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

@@ -1,5 +1,6 @@
-import 'package:boot_camp_creativa/modules/splash_screen/splash.dart';
 import 'package:flutter/material.dart';
+
+import 'modules/hogwarts_app/splash_screen/splash.dart';
 
 void main() {
   runApp(const MyApp());

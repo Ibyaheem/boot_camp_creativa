@@ -57,11 +57,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                   return 'Wizard, don\'t forget your email!';
                                 }
                               }
-                              if (!(value.contains('.'))) {
-                                return 'Email must contain "." ';
-                              }
                               if (!(value.contains('@'))) {
                                 return 'Email must contain "@" ';
+                              }
+                              if (!(value.contains('.'))) {
+                                return 'Email must contain "." ';
                               } else {
                                 return null;
                               }
@@ -115,8 +115,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             cursorColor: Colors.white,
                             validator: (value) {
-                              if (value!.length < 6) {
-                                return 'Password is too short';
+                              if (value!.isEmpty) {
+                                return 'Your password as well!';
+                              }
+                              if (value.length < 6) {
+                                return 'Password is too short!';
                               }
                               return null;
                             },
@@ -217,14 +220,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Don\'t have an account?',
+                                  'Need an account?',
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.w100,
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 20.0,
                                 ),
                                 Container(
                                   decoration: BoxDecoration(

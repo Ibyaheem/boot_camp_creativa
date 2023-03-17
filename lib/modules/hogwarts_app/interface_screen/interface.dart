@@ -43,7 +43,7 @@ class Interface extends StatelessWidget {
                 ),
               ),
               Positioned(
-                bottom: 20.0,
+                bottom: 10.0,
                 right: 20.0,
                 child: Stack(
                   children: [
