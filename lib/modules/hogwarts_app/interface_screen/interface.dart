@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../login_screen/login.dart';
 
@@ -57,11 +58,7 @@ class Interface extends StatelessWidget {
                       ),
                       child: MaterialButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginScreen()),
-                          );
+                          Get.to(() => LoginScreen());
                         },
                         child: Row(
                           children: [

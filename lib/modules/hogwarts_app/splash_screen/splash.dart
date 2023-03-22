@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 import '../interface_screen/interface.dart';
@@ -21,13 +22,12 @@ class _SplashScreenState extends State<SplashScreen>
     controller = AnimationController(
       vsync: this,
       duration: Duration(
-        seconds: 25,
+        seconds: 30,
       ),
     );
     controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Interface()));
+        Get.to(() => Interface());
       }
     });
     // TODO: implement initState

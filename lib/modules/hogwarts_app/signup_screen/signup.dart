@@ -1,21 +1,29 @@
-import 'package:boot_camp_creativa/modules/hogwarts_app/layout_screen/layout.dart';
+import 'package:boot_camp_creativa/modules/hogwarts_app/login_screen/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../models/controllers/userController/user_controller.dart';
-import '../signup_screen/signup.dart';
+import '../layout_screen/layout.dart';
 
-class LoginScreen extends StatefulWidget {
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
+
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  final loginKey = GlobalKey<FormState>();
+class _SignUpScreenState extends State<SignUpScreen> {
+  final signupKey = GlobalKey<FormState>();
   var emailController = TextEditingController();
+  var nameController = TextEditingController();
+  var phoneController = TextEditingController();
   var passwordController = TextEditingController();
-  bool isPassword = true;
+  var confirmController = TextEditingController();
   var userController = Get.put(UserController());
+  List<bool> selections = [];
+  bool isPassword = true;
+  bool isConfirmed = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/train.png'),
+            image: AssetImage('assets/TheDeathlyHallows.png'),
             fit: BoxFit.cover,
             filterQuality: FilterQuality.high,
           ),
@@ -36,12 +44,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Center(
                   child: SingleChildScrollView(
                     child: Form(
-                      key: loginKey,
+                      key: signupKey,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Login',
+                            'Sign Up',
                             style: TextStyle(
                               fontSize: 40.0,
                               fontWeight: FontWeight.bold,
@@ -49,8 +57,65 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           SizedBox(
-                            height: 30.0,
+                            height: 10.0,
                           ),
+                          //UserName
+                          TextFormField(
+                            cursorColor: Colors.white,
+                            controller: nameController,
+                            validator: (value) {
+                              if ((value == null || value.isEmpty)) {
+                                {
+                                  return 'Wizard, don\'t forget your name!';
+                                }
+                              } else {
+                                return null;
+                              }
+                            },
+                            keyboardType: TextInputType.name,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                            decoration: InputDecoration(
+                              labelText: 'User Name',
+                              labelStyle: TextStyle(
+                                color: Colors.white,
+                              ),
+                              prefixIcon: Icon(
+                                Icons.person_outlined,
+                                color: Colors.white,
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  width: 3.0,
+                                  color: Colors.white,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  20.0,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  20.0,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  20.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          //Email
                           TextFormField(
                             cursorColor: Colors.white,
                             controller: emailController,
@@ -110,8 +175,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           SizedBox(
-                            height: 20.0,
+                            height: 10.0,
                           ),
+                          //Password
                           TextFormField(
                             style: TextStyle(
                               color: Colors.white,
@@ -179,7 +245,159 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           SizedBox(
-                            height: 20.0,
+                            height: 10.0,
+                          ),
+                          //ConfirmPassword
+                          TextFormField(
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                            cursorColor: Colors.white,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Your password as well!';
+                              }
+                              if (value.length < 6) {
+                                return 'Password is too short!';
+                              }
+                              if (confirmController == passwordController) {
+                                return 'Passwords isn\'t matching!';
+                              }
+                              return null;
+                            },
+                            keyboardType: TextInputType.visiblePassword,
+                            controller: confirmController,
+                            obscureText: isConfirmed,
+                            decoration: InputDecoration(
+                              labelText: 'Confirm Password',
+                              labelStyle: TextStyle(
+                                color: Colors.white,
+                              ),
+                              prefixIcon: Icon(
+                                Icons.lock_outline,
+                                color: Colors.white,
+                              ),
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isConfirmed = !isConfirmed;
+                                  });
+                                },
+                                icon: Icon(
+                                  isConfirmed
+                                      ? Icons.visibility_outlined
+                                      : Icons.visibility_off_outlined,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  width: 3.0,
+                                  color: Colors.white,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  20.0,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  20.0,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  20.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          //Phone
+                          TextFormField(
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                            cursorColor: Colors.white,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Don\'t forget your phone number!';
+                              }
+                              if (value.length < 11) {
+                                return 'Phone number is too short!';
+                              }
+                              return null;
+                            },
+                            keyboardType: TextInputType.phone,
+                            controller: phoneController,
+                            decoration: InputDecoration(
+                              labelText: 'Phone Number',
+                              labelStyle: TextStyle(
+                                color: Colors.white,
+                              ),
+                              prefixIcon: Icon(
+                                Icons.phone,
+                                color: Colors.white,
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  width: 3.0,
+                                  color: Colors.white,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  20.0,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  20.0,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  20.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          // ToggleButtons(
+                          //   children: [
+                          //     Icon(
+                          //       Icons.male_outlined,
+                          //     ),
+                          //     Icon(
+                          //       Icons.female_outlined,
+                          //     ),
+                          //     Icon(
+                          //       Icons.female_outlined,
+                          //     ),
+                          //   ],
+                          //   isSelected: selections,
+                          //   onPressed: (int index) {
+                          //     setState(() {
+                          //       selections[index] = !selections[index];
+                          //     });
+                          //   },
+                          // ),
+
+                          SizedBox(
+                            height: 10.0,
                           ),
                           Center(
                             child: Container(
@@ -193,11 +411,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: MaterialButton(
                                 onPressed: () {
                                   setState(() {
-                                    if (loginKey.currentState!.validate()) {
+                                    if (signupKey.currentState!.validate()) {
                                       print(emailController.text);
                                       print(passwordController.text);
-                                      userController
-                                          .login(emailController.text);
+                                      userController.register(
+                                        localEmail: emailController.text,
+                                        localName: nameController.text,
+                                        localPhone: phoneController.text,
+                                      );
                                       Get.showSnackbar(
                                         GetSnackBar(
                                           title: 'Excellent!',
@@ -235,14 +456,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           SizedBox(
-                            height: 70.0,
+                            height: 10.0,
                           ),
                           Center(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Need an account?',
+                                  'Have an account?',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w100,
@@ -256,10 +477,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   child: TextButton(
                                     onPressed: () {
-                                      Get.to(() => SignUpScreen());
+                                      Get.to(() => LoginScreen());
                                     },
                                     child: Text(
-                                      'Register now',
+                                      'Login now',
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
