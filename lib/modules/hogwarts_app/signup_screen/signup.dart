@@ -1,4 +1,5 @@
 import 'package:boot_camp_creativa/modules/hogwarts_app/login_screen/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,6 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   var confirmController = TextEditingController();
   var userController = Get.put(UserController());
   List<bool> selections = [];
+  var valueRadio = 0;
   bool isPassword = true;
   bool isConfirmed = true;
 
@@ -122,7 +124,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             validator: (value) {
                               if ((value == null || value.isEmpty)) {
                                 {
-                                  return 'Wizard, don\'t forget your email!';
+                                  return 'Your email also!';
                                 }
                               }
                               if (!(value.contains('@'))) {
@@ -255,12 +257,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             cursorColor: Colors.white,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Your password as well!';
+                                return 'Please, Confirm your password!';
                               }
                               if (value.length < 6) {
                                 return 'Password is too short!';
                               }
-                              if (confirmController == passwordController) {
+                              if (confirmController.text !=
+                                  passwordController.text) {
                                 return 'Passwords isn\'t matching!';
                               }
                               return null;
@@ -328,7 +331,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             cursorColor: Colors.white,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Don\'t forget your phone number!';
+                                return 'Also, your phone number!';
                               }
                               if (value.length < 11) {
                                 return 'Phone number is too short!';
@@ -395,6 +398,62 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           //     });
                           //   },
                           // ),
+                          Row(
+                            children: [
+                              Row(
+                                children: [
+                                  Radio(
+                                    activeColor: Colors.white,
+                                    autofocus: false,
+                                    hoverColor: Colors.white,
+                                    value: 1,
+                                    groupValue: valueRadio,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        valueRadio = value!;
+                                      });
+                                    },
+                                  ),
+                                  Text(
+                                    'Wizard',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 17.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 120.0,
+                              ),
+                              Center(
+                                child: Row(
+                                  children: [
+                                    Radio(
+                                      focusColor: Colors.white,
+                                      activeColor: Colors.white,
+                                      hoverColor: Colors.white,
+                                      autofocus: false,
+                                      value: 2,
+                                      groupValue: valueRadio,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          valueRadio = value!;
+                                        });
+                                      },
+                                    ),
+                                    Text(
+                                      'Witch',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 17.0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
 
                           SizedBox(
                             height: 10.0,
@@ -414,6 +473,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     if (signupKey.currentState!.validate()) {
                                       print(emailController.text);
                                       print(passwordController.text);
+                                      FirebaseAuth.instance
+                                          .createUserWithEmailAndPassword(
+                                              email: emailController.text,
+                                              password:
+                                                  passwordController.text);
                                       userController.register(
                                         localEmail: emailController.text,
                                         localName: nameController.text,

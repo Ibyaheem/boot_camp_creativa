@@ -1,4 +1,5 @@
 import 'package:boot_camp_creativa/modules/hogwarts_app/layout_screen/layout.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -196,6 +197,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                     if (loginKey.currentState!.validate()) {
                                       print(emailController.text);
                                       print(passwordController.text);
+                                      FirebaseAuth.instance
+                                          .signInWithEmailAndPassword(
+                                              email: emailController.text,
+                                              password: passwordController.text)
+                                          .then((value) {
+                                        print('data is correct');
+                                      });
                                       userController
                                           .login(emailController.text);
                                       Get.showSnackbar(

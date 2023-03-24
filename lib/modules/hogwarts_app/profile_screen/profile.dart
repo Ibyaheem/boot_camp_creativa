@@ -15,6 +15,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   var nameController = TextEditingController();
   var phoneController = TextEditingController();
   var userController = Get.put(UserController());
+  var valueRadio = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -298,7 +299,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   phoneController.text = userController.phone!.value;
                 },
                 child: Text(
-                  'Get Info',
+                  'Accio Info!',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
